@@ -9,9 +9,16 @@ try {
     die('Error: ' . $e->getMessage());
 }
 ?>
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rifas</title>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rifas</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/styles.css" rel="stylesheet"></head><body>
+<link href="assets/styles.css" rel="stylesheet">
+</head>
+<body>
 <?php include 'navbar.php'; ?>
 <main class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
@@ -21,6 +28,9 @@ try {
     <?php if(count($raffles)): foreach($raffles as $r): ?>
       <div class="col-12 col-md-6 col-lg-4">
         <div class="card card-bleed shadow-sm h-100">
+          <?php if(!empty($r['imagen'])): ?>
+            <img src="uploads/<?= htmlspecialchars($r['imagen']) ?>" class="card-img-top" alt="Imagen Rifa" style="max-height:190px; object-fit:cover; background:#fcfcfc;">
+          <?php endif; ?>
           <div class="card-body d-flex flex-column">
             <h5 class="mb-1"><?= e($r['titulo']) ?></h5>
             <div class="small-muted mb-2">Sorteo: <?= e($r['fecha_sorteo']) ?></div>
